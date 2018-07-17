@@ -22,6 +22,7 @@
       class="upload-demo"
       action="http://127.0.0.1:3000/admin/walnut/imgUpload"
       :file-list="fileList"
+      :headers="authHeader"
       :multiple="true"
       list-type="picture">
       <el-button size="small" type="primary">点击上传</el-button>
