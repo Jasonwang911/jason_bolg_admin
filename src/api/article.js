@@ -9,3 +9,19 @@ export function articlePublishApi(data) {
     data: qs.stringify(data)
   })
 }
+
+export function articleListApi(data) {
+  return request({
+    url: '/font/articleList',
+    method: 'post',
+    data: qs.stringify(data)
+  })
+}
+
+export function articleApi(data) {
+  return request({
+    url: '/font/article',
+    method: 'post',
+    data: qs.stringify(data)
+  })
+}
