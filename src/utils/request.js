@@ -1,9 +1,10 @@
 import axios from 'axios'
 import store from '../store'
+import { baseUrl } from '../config'
 
 // create an axios instance
 const baseConfig = {
-  baseURL: 'http://127.0.0.1:3000', // api的base_url
+  baseURL: baseUrl, // api的base_url
   withCredentials: true,
   timeout: 5000 // 请求超时时间
 }

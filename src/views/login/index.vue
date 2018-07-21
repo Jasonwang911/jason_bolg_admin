@@ -8,7 +8,7 @@
         </span>
         <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
       </el-form-item>
-      <img src="http://127.0.0.1:3000/admin/captcha" alt="">
+      <img :src="baseUrl+'/admin/captcha'" alt="">
       <el-form-item prop="captcha">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
@@ -39,6 +39,8 @@
 <script>
 import { postApi } from '@/api/login'
 import { isvalidUsername } from '@/utils/validate'
+import { baseUrl } from '@/config'
+console.log(baseUrl)
 
 export default {
   name: 'login',
@@ -68,8 +70,12 @@ export default {
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
       loading: false,
-      pwdType: 'password'
+      pwdType: 'password',
+      baseUrl: ''
     }
+  },
+  mounted() {
+    this.baseUrl = baseUrl;
   },
   methods: {
     showPwd() {

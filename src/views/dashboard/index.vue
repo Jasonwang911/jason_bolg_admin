@@ -20,7 +20,7 @@
     <!-- 照片上传 -->
     <el-upload
       class="upload-demo"
-      action="http://127.0.0.1:3000/admin/walnut/imgUpload"
+      :action="actionBaseUrl"
       :file-list="fileList"
       :headers="authHeader"
       :multiple="true"
@@ -37,6 +37,7 @@
 import WangEditor from '@/components/WangEditor'
 import { mapGetters } from 'vuex'
 import { articlePublishApi, articleApi, articleListApi } from '@/api/article'
+import { baseUrl } from '@/config'
 
 export default {
   name: 'dashboard',
@@ -49,9 +50,7 @@ export default {
       },
       html: '',
       fileList: [],
-      // authHeader: {
-      //   authorization: `Bearer ${this.token}`
-      // }
+      actionBaseUrl: ''
     }
   },
   components: {
@@ -67,7 +66,10 @@ export default {
       return {
         'authorization': `Bearer ${this.token}`
       }
-    }
+    },
+  },
+  mounted() {
+    this.actionBaseUrl = `${baseUrl}/admin/walnut/imgUpload`
   },
   methods: {
     publicContent() {
@@ -82,8 +84,9 @@ export default {
             type: 'success'
           });
           articleListApi().then(response => {
-            console.log(response.data.data[0].id);
-            articleApi({id: response.data.data[0].id}).then( resp => {
+            console.log('====>',response.data.data.length-1)
+            console.log(response.data.data[response.data.data.length-1].id);
+            articleApi({id: response.data.data[response.data.data.length-1].id}).then( resp => {
               this.html = resp.data.data.content;
             })
           })
