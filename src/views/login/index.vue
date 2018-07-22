@@ -1,20 +1,23 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">vue-element-admin</h3>
+      <h3 class="title">文玩核桃后台管理系统</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
         </span>
         <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
       </el-form-item>
-      <img :src="baseUrl+'/admin/captcha'" alt="">
-      <el-form-item prop="captcha">
-        <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input type="text" v-model="loginForm.capkey" autoComplete="on" placeholder="" />
-      </el-form-item>
+
+      <el-row class="clearfix">
+        <el-form-item prop="smscode" class="fl"  style="width:50%">
+          <el-input style="width:100%" name="smscode" type="text" v-model="loginForm.capkey" autoComplete="on" placeholder="请输入验证码" />
+        </el-form-item>
+        <div class="fr" @click="getSmsCode">
+          <img :src="baseUrl+'/admin/captcha'" alt="">
+        </div>
+      </el-row>
+      
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password"></svg-icon>
@@ -25,13 +28,13 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
-          Sign in
+          点击登录
         </el-button>
       </el-form-item>
-      <div class="tips">
+      <!-- <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
         <span> password: admin</span>
-      </div>
+      </div> -->
     </el-form>
   </div>
 </template>
@@ -40,7 +43,6 @@
 import { postApi } from '@/api/login'
 import { isvalidUsername } from '@/utils/validate'
 import { baseUrl } from '@/config'
-console.log(baseUrl)
 
 export default {
   name: 'login',
@@ -78,6 +80,9 @@ export default {
     this.baseUrl = baseUrl;
   },
   methods: {
+    getSmsCode() {
+
+    },
     showPwd() {
       if (this.pwdType === 'password') {
         this.pwdType = ''
