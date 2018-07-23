@@ -36,6 +36,28 @@ export const constantRouterMap = [
       component: () => import('@/views/dashboard/index')
     }]
   },
+  // 文章管理
+  {
+    path: '/walnuts',
+    component: Layout,
+    redirect: '/walnuts/newsList',
+    name: 'Walnuts',
+    meta: { title: '核桃', icon: 'example' },
+    children: [
+      {
+        path: 'newsList',
+        name: 'NewsList',
+        component: () => import('@/views/newsList/index'),
+        meta: { title: '核桃新闻', icon: 'table' }
+      },
+      {
+        path: 'showImg',
+        name: 'ShowImg',
+        component: () => import('@/views/showImg/index'),
+        meta: { title: '核桃展示', icon: 'tree' }
+      }
+    ]
+  },
 
   {
     path: '/example',

@@ -6,17 +6,17 @@
  * baseImgPath: 图片存放地址
  *
  */
-const baseUrl = 'http://walnuts.wangshen.top/apis'
+let baseUrl = 'http://walnuts.wangshen.top/apis'
 const routerMode = ''
-const baseImgPath = ''
+let baseImgPath = ''
 
-// if (process.env.NODE_ENV == 'development') {
-//     baseUrl = 'http://walnuts.wangshen.top/apis';
-//     baseImgPath = '';
-// } else {
-//     baseUrl = 'http://walnuts.wangshen.top/apis';
-//     baseImgPath = '';
-// }
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://walnuts.wangshen.top/apis'
+  baseImgPath = ''
+} else {
+  baseUrl = 'http://walnuts.wangshen.top/apis'
+  baseImgPath = ''
+}
 
 export {
   baseUrl,

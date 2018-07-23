@@ -14,7 +14,7 @@
           <el-input style="width:100%" name="smscode" type="text" v-model="loginForm.capkey" autoComplete="on" placeholder="请输入验证码" />
         </el-form-item>
         <div class="fr" @click="getSmsCode">
-          <img :src="baseUrl+'/admin/captcha'" alt="">
+          <img :src="baseUrlImg" alt="图片验证码">
         </div>
       </el-row>
       
@@ -73,15 +73,15 @@ export default {
       },
       loading: false,
       pwdType: 'password',
-      baseUrl: ''
+      baseUrlImg: ''
     }
   },
   mounted() {
-    this.baseUrl = baseUrl;
+    this.baseUrlImg = `${baseUrl}/admin/captcha`;
   },
   methods: {
     getSmsCode() {
-
+      this.baseUrlImg = `${baseUrl}/admin/captcha?time=${new Date().getTime()}`;
     },
     showPwd() {
       if (this.pwdType === 'password') {
