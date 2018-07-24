@@ -6,15 +6,15 @@
  * baseImgPath: 图片存放地址
  *
  */
-let baseUrl = 'http://walnuts.wangshen.top/apis'
+let baseUrl = 'https://walnuts.wangshen.top/apis'
 const routerMode = ''
 let baseImgPath = ''
 
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://walnuts.wangshen.top/apis'
+  baseUrl = 'https://walnuts.wangshen.top/apis'
   baseImgPath = ''
 } else {
-  baseUrl = 'http://walnuts.wangshen.top/apis'
+  baseUrl = 'https://walnuts.wangshen.top/apis'
   baseImgPath = ''
 }
 
